@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name · GCSE Maths Tutoring</title>
+  <meta name="description" content="GCSE Maths tutoring landing page — book a free consultation in one click." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='10' ry='10' x='4' y='4' width='56' height='56' fill='%2399aa38'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial' font-size='28' font-weight='900' fill='white'%3ETU%3C/text%3E%3C/svg%3E" />
+
+  <style>
+  :root{
+    --apple-green: #9038aa;
+    --straw: #9A5B90;
+    --dark: #1a1423;
+    --light: #fff;
+
+    --bg: #ececec;
+    --fg: var(--dark);
+    --muted: #555;
+    --panel: var(--light);
+    --accent: var(--apple-green);
+    --accent-2: var(--straw);
+
+    --radius: 18px; --maxw: 920px;
+  }
+
+*{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font: 400 16px/1.65 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:.2em}
+
+  .container{max-width:var(--maxw);margin:0 auto;padding:20px clamp(16px,3vw,28px)}
+
+  .panel{background:var(--panel);border:1px solid #e2e2e2;border-radius:var(--radius);padding: clamp(20px,5vw,42px);box-shadow:0 4px 14px rgba(0,0,0,0);}
+  .panel + .panel{margin-top:22px}
+
+  /* NAVIGATION BAR */
+  header {
+    background: var(--panel);
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 14px clamp(16px,3vw,28px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nav-logo {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:900;
+    font-size:20px;
+    color:var(--accent);
+    text-decoration:none;
+  }
+  .nav-logo img {
+    height:60px;
+    width:auto;
+    border-radius:6px;
+  }
+  nav a {
+    margin-left: 18px;
+    font-weight:600;
+    color: var(--fg);
+    text-decoration:none;
+  }
+  nav a:hover {
+    color: var(--accent);
+  }
+
+
+  .kicker{color:var(--muted);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.9rem}
+  .title{font-size: clamp(34px, 7vw, 50px);line-height:1.05;font-weight:900;letter-spacing:-.02em;margin:.15em 0 .35em}
+  .accent{color:var(--accent)}
+  .lead{max-width:62ch;color:var(--muted);font-size:clamp(17px,2.3vw,20px)}
+
+  section{margin: clamp(20px,4vw,32px) 0}
+  h2{font-size: clamp(20px,3.2vw,28px);text-transform:uppercase;letter-spacing:.04em;margin:0 0 16px;color:var(--fg)}
+
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+  .card{grid-column:span 12;border:none;border-radius:14px;background:var(--light);transition:background 0.3s ease, transform 0.3s ease;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+  .card.shadow{padding:20px;transition:transform 0.3s ease}
+  .card.testimonial{display:flex;align-items:flex-start;gap:14px}
+  .card.testimonial svg{width:48px;height:48px;border-radius:8px;flex-shrink:0}
+  @media(min-width:720px){.card--third{grid-column:span 4}.card--half{grid-column:span 6}}
+
+  /* UPDATED styles for card--third */
+  .card.card--third {
+    box-shadow:0 6px 16px rgba(0,0,0,0.15);
+    border: 1px solid #e2e2e2;
+    background: var(--light);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+ 
+
+  .card.shadow:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  }
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;font-weight:600;transition:all 0.3s ease}
+  .btn:hover{
+    text-decoration:none;
+    box-shadow:0 6px 16px rgba(0,0,0,0.25);
+    filter:brightness(1.05);
+    transform: scale(1.05);
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--straw);}
+  .btn-secondary{background:var(--fg);color:#fff;border:2px solid var(--fg)}
+  .btn-secondary:hover{background:#333;border-color:#333}
+
+
+  .small{color:var(--muted)}
+  .faq-block{margin-bottom:24px}
+
+  footer .footer-inner{display:grid;gap:18px;padding:22px;border:none;border-radius:var(--radius);background:var(--panel);box-shadow:none}
+
+/* TESTIMONIAL CAROUSEL */
+.carousel-wrapper {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.carousel .card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  padding:20px;
+  margin: 0;
+}
+
+/* Buttons outside the carousel */
+.carousel-wrapper .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 5;
+}
+.carousel-wrapper .carousel-btn:hover {
+  background: var(--straw);
+}
+.carousel-wrapper .carousel-btn.prev { left: -50px; }
+.carousel-wrapper .carousel-btn.next { right: -50px; }
+
+.carousel-dots {
+  text-align: center;
+  margin-top: 12px;
+}
+.carousel-dots button {
+  width: 10px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 4px;
+  background: #ccc;
+  cursor: pointer;
+}
+.carousel-dots button.active {
+  background: var(--accent);
+}
+
+/* MOBILE: hide buttons, keep swipe */
+@media (max-width: 720px) {
+  .carousel-wrapper .carousel-btn {
+    display: none;
+  }
+}
+
+</style>
+
+</head>
+<body>
+  <!-- HEADER NAV -->
+  <header>
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">
+        <img src="logo.jpg" alt="Tutoring Logo">
+        
+      </a>
+      <nav>
+<span style="color:var(--muted)">11+ Tutoring and Mock Exams</span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+
+    <!-- HERO -->
+    <section class="panel" aria-labelledby="hero-title" style="margin-top:-5px;">
+
+      <!--<span class="kicker">11+ Tutoring and Mock Exams</span>-->
+      <h1 id="hero-title" class="title"><span class="accent">Fast Track, Guaranteed Results</span> 11+ Tutoring & Mock Exams</h1>
+      <p class="lead">15 spaces left! Tailored preparation for GL Assessment English, Maths, Verbal & Non-Verbal Reasoning.<br> Book an assessment below to find out where your child needs to improve - for free!</p>
+      <p style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+        <a class="btn btn-primary" href="#book">Book a Free Assessment Today</a>
+        <a class="btn btn-secondary" href="#pricing">Apply Now</a>
+      </p>
+
+
+    <div class="carousel-wrapper">
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="card card--third">
+        <p>⭐⭐⭐⭐⭐</p>
+        <p class="small" style="font-style:italic;">
+          “At first I found verbal reasoning really hard, but the practice questions and tips made it much easier. The tutor showed me tricks to save time in the exam, and that helped me get almost full marks in the mocks. On the real day, I felt calm because I knew exactly what to expect.”
+        </p>
+
+        <strong>Amira, Age 11</strong>
+        <p class="small">– Successful Herschel Grammar Candidate</p>
+      </div>
+
+      <div class="card card--third">
+        <p>⭐⭐⭐⭐⭐</p>
+        <p class="small" style="font-style:italic;">
+          “Maths was my weakest subject, but after working on problem-solving and word questions, I actually started enjoying them. I liked the group lessons because we competed with each other in a fun way. It gave me confidence when I saw my scores improve week by week.”
+        </p>
+
+        <strong>Rohan, Age 10</strong>
+        <p class="small">– Secured Langley Grammar Place</p>
+      </div>
+
+      <div class="card card--third">        
+<p>⭐⭐⭐⭐⭐</p>
+        <p class="small" style="font-style:italic;">
+          “The feedback after mock tests showed me where I lost marks, so I could improve next time. It made me feel ready for the real exam. The vocabulary lists and reading recommendations were my favourite part. I learnt new words every week and they came up in the real exam.”
+        </p>
+
+        <strong>Sofia, Age 11</strong>
+        <p class="small">– Upton Court High Offer</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-btn prev">&#10094;</button>
+  <button class="carousel-btn next">&#10095;</button>
+  <div class="carousel-dots"></div>
+</div>
+
+
+
+    </section>
+
+
+<!-- ABOUT US -->
+    <section class="panel" aria-labelledby="test-title">
+      <h2 id="test-title">Meet Our Tutors - 3 For the Price of One!</h2>
+<span class="small">Our Tutors have real world experience outside of just tutoring, so we walk the walk not just talk the talk!</span>
+      <div class="grid" style="margin-top:20px;">
+        <div class="card testimonial">
+          <img src="nikita.png" style="width:100px;box-shadow:0 4px 14px rgba(0,0,0,0.25);"/>
+          <div><strong><br/>Jini Patel</strong> - Tutor of 30 Years & Former Research Scientist for Mars. <span class="small"><br>Qualifications: Bachelors and Masters in Pharmacy | Masters in Teaching, PGCE, QTS</span></div>
+        </div>
+        <div class="card testimonial">
+    <img src="nikita.png" style="width:100px;box-shadow:0 4px 14px rgba(0,0,0,0.25);"/>
+          <div><strong><br/>Nikita Patel</strong> - Qualified Teacher, KS4 Coordinator, Tutor of 12 Years and Clinical Pharmacist. <span class="small"><br>Qualifications: Bachelors and Masters in Pharmacy | Masters in Teaching, PGCE, QTS</span></div>
+
+        </div>
+        <div class="card testimonial">
+    <img src="faisal.jpg" style="width:100px;box-shadow:0 4px 14px rgba(0,0,0,0.25);"/>
+          <div><strong><br/>Faisal Anderson</strong> - Tutor, Technical Director,  Google Award Winner & International Speaker. <span class="small"><br>Qualifications: 1st Class Bachelors in Algorithmic Music & Computing </span></div>
+
+        </div>
+        
+      </div>
+    </section>
+
+
+        <!-- FAQ -->
+    <section class="panel" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQs</h2>
+      <div class="card faq-block"><strong>What is included in the free assessment?</strong><br><span class="small">20 Questions that cover all the 11+ Syllabus will be given via a form, and once done we can show you exactly which topics your child is sturggling with and how to improve to achieve top to full marks.</span></div>
+      <div class="card faq-block"><strong>What qualifications and experience do your tutors have?
+</strong><br><span class="small">Please see our "Meet The Tutors" section - you get 3 tutors with years of experience in tutoring and in real world, maths and science careers for the price of one!</span></div>
+      <div class="card faq-block"><strong>What makes you different from other tutors out there?</strong><br><span class="small">We have 40+ years combined experience as tutors, but also have had real world careers outside of education, and all go into Grammar schools. We also offer very competitive prices which you can see in our Pricing section.</span></div>
+      <div class="card faq-block"><strong>Do you offer individual lessons?</strong><br><span class="small">No, and for good reasons, it sounds counter intuitive but students do better in group lessons below:
+<ul>
+<li>Your child must learn to thrive in an Exam style setting. Learning in small groups mirrors that environment, helping children develop focus and pace under light pressure.</li>
+<li>Motivation through peer learning – Working alongside other children builds healthy competition and helps students stay motivated. Seeing others tackle similar challenges boosts confidence and effort.</li>
+<li>Collaborative learning is essential – Children often learn by hearing others’ answers or approaches. Discussing reasoning and strategies reinforces understanding and exposes them to different problem-solving methods.</li>
+<li>More affordable – Group lessons usually cost less per hour than individual tuition, providing great value without compromising on quality.</li>
+<ul>
+</span></div>
+
+ <div class="card faq-block"><strong>How are your 11+ tuition lessons structured?</strong><br><span class="small">Four hours in total per week, with each hour focussed on each area of the 11+ Exam, GL Assessment.</span></div>
+ <div class="card faq-block"><strong>Do you provide all the learning materials and practice papers?</strong><br><span class="small">Yes, this is all included, and homework is also given.</span></div>
+ <div class="card faq-block"><strong>How do you track progress and keep parents updated?</strong><br><span class="small">We do an 11+ Progress Test that assess where your child is excelling and needs to improve. A personalised plan to improve will be sent each month to you.</span></div>
+ <div class="card faq-block"><strong>Are 11+ Paper Mock Exams included?</strong><br><span class="small">Yes - first mock exam will take place in Easter, final mock test will be in August.</span></div>
+    </section>
+    <!-- PACKAGES -->
+    <section id="pricing" class="panel" aria-labelledby="pricing-title">
+      <h2 id="pricing-title">Simple pricing</h2>
+      <div class="grid">
+        <div class="card card--half shadow">
+          <h3 style="margin:0 0 6px">11+ Fast Track, Complete Course</h3>
+
+          <p style="font-weight:900; font-size:22px; margin:0 0 12px"><span class="accent"><strike>£7,500</strike> Only £5,000 for 8 Months Weekly Tutoring</p></span>
+This includes:
+          <ul class="small" style="margin:0 0 12px; padding-left:18px">
+	    <li>All 11+ Areas - Verbal Reasoning, Non-Verbal Reasoning, Mathematics and English over 4 hours each week, every Saturday.</li>
+            <li>FREE Mock Paper Assessments, Progress Assessments and Homework Included</li>
+	    <li>FREE Starter Kit Included (4 Folders for 11+ Subjects, Stationary and Electronic Oxford Dictionary)</li>
+            <li>FREE Progress Reports every month for Parents</li>
+            <li>Group Classes - 3 Tutors for the Price of One!</li>
+          </ul>
+          <p><a class="btn btn-secondary" href="#book">Book Now - only 15 spaces left!</a></p>
+        </div>
+        <div class="card card--half shadow">
+          <h3 style="margin:0 0 6px">Holiday 11+ Crash Course</h3>
+          <span class="accent"><p style="font-weight:900; font-size:22px; margin:0 0 12px">£2,500 for 4 Days Tutoring & 2 Mock Exams</p></span>
+          <ul class="small" style="margin:0 0 12px; padding-left:18px">
+<li>All 11+ Topics, each topic over 4 Days with 2 Mock Exams.</li>
+            <li>4 Days over School Holidays covering each topic - 8 hours per day with 1 hour lunch break</li>
+            <li>You will need to bring your own stationary</li>
+            <li>Occurs in February, April and August</li>
+          </ul>
+          <p><a class="btn btn-secondary" href="#book">Join group</a></p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:8px">Results Guarantee is dependant on 100% Participation. Please ask for more details.</p>
+    </section>
+
+
+
+    <!-- CONTACT / BOOKING -->
+    <section id="book" class="panel">
+      <h2 id="book-title">CONTACT US</h2>
+      <p class="small">Tell us your goals and exam board — we’ll propose a plan.</p>
+      <p style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="mailto:you@example.com?subject=Tutoring%20Consultation&body=Student%20name%3A%0AExam%20board%3A%0AGoals%3A%0AAvailability%3A">Book Free Assessment Today</a>
+      </p>
+
+    </section>
+
+
+
+    <footer>
+      <div class="footer-inner panel">
+        <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+          <a class="logo" href="#top">TU</a>
+          <div class="small">© <span id="year"></span> Your Tutoring. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+<script>
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+const dotsNav = document.querySelector('.carousel-dots');
+
+let currentIndex = 0;
+
+// Create dots dynamically
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  if (i === 0) dot.classList.add('active');
+  dotsNav.appendChild(dot);
+});
+const dots = Array.from(dotsNav.children);
+
+function updateCarousel(index) {
+  const slideWidth = slides[0].offsetWidth; // ✅ removed "+20"
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
+  currentIndex = index;
+}
+
+// Button navigation
+nextBtn.addEventListener('click', () => {
+  const newIndex = (currentIndex + 1) % slides.length;
+  updateCarousel(newIndex);
+});
+prevBtn.addEventListener('click', () => {
+  const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateCarousel(newIndex);
+});
+dots.forEach((dot, i) => dot.addEventListener('click', () => updateCarousel(i)));
+
+// --- Swipe / touch support ---
+let startX = 0;
+let isDragging = false;
+
+track.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+}, { passive: true });
+
+track.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const deltaX = e.touches[0].clientX - startX;
+  track.style.transition = "none";
+  const slideWidth = slides[0].offsetWidth;
+  track.style.transform = `translateX(${deltaX - currentIndex * slideWidth}px)`;
+}, { passive: true });
+
+track.addEventListener('touchend', (e) => {
+  isDragging = false;
+  track.style.transition = "transform 0.5s ease";
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff > 50) {
+    // Swipe right
+    const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel(newIndex);
+  } else if (diff < -50) {
+    // Swipe left
+    const newIndex = (currentIndex + 1) % slides.length;
+    updateCarousel(newIndex);
+  } else {
+    // Snap back
+    updateCarousel(currentIndex);
+  }
+});
+</script>
+
+
+
+</body>
+</html>
