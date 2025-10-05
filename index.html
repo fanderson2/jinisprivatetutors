@@ -229,6 +229,22 @@
   }
 }
 
+/* Mobile header adjustments */
+@media (max-width: 720px) {
+  /* Center the logo and hide nav text */
+  header .nav-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  header nav span {
+    display: none;
+  }
+
+  .nav-logo {
+    margin: 0 auto;
+  }
+}
 
 
 </style>
@@ -487,6 +503,7 @@ track.addEventListener('touchend', (e) => {
 
 </body>
 </html>
+
 
 
 
